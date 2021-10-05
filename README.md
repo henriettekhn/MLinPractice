@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# ML in Practice
+# ML in Practice - Seminar
 Source code for the practical Seminar "Machine Learning in Practice", taught at Osnabrück University in the winter term 2021/2022.
 =======
 # Machine Learning in Practice
