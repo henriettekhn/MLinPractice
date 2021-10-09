@@ -11,6 +11,10 @@ Created on Wed Sep 29 14:23:48 2021
 import argparse, pickle
 from sklearn.dummy import DummyClassifier
 from sklearn.metrics import accuracy_score, cohen_kappa_score, precision_score, recall_score, f1_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier 
+from sklearn.pipeline import make_pipeline 
+from sklearn.svm import SVC
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Classifier")
@@ -22,6 +26,8 @@ parser.add_argument("-m", "--majority", action = "store_true", help = "majority 
 parser.add_argument("-f", "--frequency", action = "store_true", help = "label frequency classifier")
 parser.add_argument("-at", "--always_true", action = "store_true", help = "always true classifier")
 parser.add_argument("-af", "--always_false", action = "store_true", help = "always false classifier")
+parser.add_argument("--knn", type = int, help = "k nearest neighbor classifer with the specified value of k", default = None)
+parser.add_argument("--svm", help = "classifier using a support vector machine")
 parser.add_argument("-a", "--accuracy", action = "store_true", help = "evaluate using accuracy")
 parser.add_argument("-k", "--kappa", action = "store_true", help = "evaluate using Cohen's kappa")
 parser.add_argument("-p", "--precision", action = "store_true", help = "evaluate using precision")
@@ -44,23 +50,35 @@ else:   # manually set up a classifier
         # majority vote classifier
         print("    majority vote classifier")
         classifier = DummyClassifier(strategy = "most_frequent", random_state = args.seed)
-        classifier.fit(data["features"], data["labels"])
+
     elif args.frequency:
         # label frequency classifier
         print("    label frequency classifier")
         classifier = DummyClassifier(strategy = "stratified", random_state = args.seed)
-        classifier.fit(data["features"], data["labels"])
+        
     elif args.always_true:
         # always true classifier
         print("    always true classifier")
         classifier = DummyClassifier(strategy = "constant", constant = True)
-        classifier.fit(data["features"], data["labels"])
+        
     elif args.always_false:
         # always false classifier
         print("    always false classifier")
         classifier = DummyClassifier(strategy = "constant", constant = False)
-        classifier.fit(data["features"], data["labels"])
-
+        
+    elif args.knn is not None:
+        print("    {0} nearest neighbor classifier".format(args.knn))
+        standardizer = StandardScaler()
+        knn_classifier = KNeighborsClassifier(args.knn)
+        classifier = make_pipeline(standardizer, knn_classifier)
+        
+    elif args.svm:
+        print ("    support vector machine classifer")
+        standardizer = StandardScaler()
+        classifier = make_pipeline(standardizer, SVC())
+    
+    classifier.fit(data["features"], data["labels"].ravel())
+        
 
 # now classify the given data
 prediction = classifier.predict(data["features"])
