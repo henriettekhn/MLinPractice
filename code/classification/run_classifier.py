@@ -50,7 +50,7 @@ else:   # manually set up a classifier
         # majority vote classifier
         print("    majority vote classifier")
         classifier = DummyClassifier(strategy = "most_frequent", random_state = args.seed)
-
+        
     elif args.frequency:
         # label frequency classifier
         print("    label frequency classifier")
