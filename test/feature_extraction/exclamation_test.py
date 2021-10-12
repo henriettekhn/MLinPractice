@@ -24,9 +24,14 @@ class ExclamationTest(unittest.TestCase):
         self.exclamation_count.fit(self.df)
         EXPECTED_COUNT = [5]
         
-        ex_count = self.exclamation_count._return
+        ex_count = self.exclamation_count._get_values
         
         self.assertEqual(ex_count, EXPECTED_COUNT)
+        
+        # AssertionError: <method object at 0x7f2ca23e5388> != [5] 
+        
+if __name__ == '__main__':
+    unittest.main()
         
 
     
