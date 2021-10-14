@@ -11,7 +11,7 @@ Created on Tue Sep 28 15:55:44 2021
 
 import os, argparse, csv
 import pandas as pd
-from code.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL
+from code.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL, COLUMN_NRHASHTAGS
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Creation of Labels")
@@ -35,6 +35,7 @@ df = pd.concat(dfs)
 
 # compute new column "label" based on likes and retweets
 df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
+
 
 # print statistics
 print("Number of tweets: {0}".format(len(df)))

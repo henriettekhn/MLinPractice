@@ -12,8 +12,9 @@ import argparse, csv, pickle
 import pandas as pd
 import numpy as np
 from code.feature_extraction.character_length import CharacterLength
+from code.feature_extraction.number_hashtags import NumberHashtags
 from code.feature_extraction.feature_collector import FeatureCollector
-from code.util import COLUMN_TWEET, COLUMN_LABEL
+from code.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS
 
 
 # setting up CLI
@@ -23,6 +24,7 @@ parser.add_argument("output_file", help = "path to the output pickle file")
 parser.add_argument("-e", "--export_file", help = "create a pipeline and export to the given location", default = None)
 parser.add_argument("-i", "--import_file", help = "import an existing pipeline from the given location", default = None)
 parser.add_argument("-c", "--char_length", action = "store_true", help = "compute the number of characters in the tweet")
+parser.add_argument("-h", "--number_hashtags", action = "store_true", help = "compute the number of hushatgs in the tweet")
 args = parser.parse_args()
 
 # load data
@@ -40,7 +42,11 @@ else:    # need to create FeatureCollector manually
     if args.char_length:
         # character length of original tweet (without any changes)
         features.append(CharacterLength(COLUMN_TWEET))
-    
+        
+    if args.number_hashtags:
+        # number of hashtags in tweet
+        features.append(NumberHashtags(COLUMN_HASHTAGS))
+
     # create overall FeatureCollector
     feature_collector = FeatureCollector(features)
     

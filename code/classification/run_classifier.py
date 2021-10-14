@@ -50,6 +50,7 @@ else:   # manually set up a classifier
         classifier = DummyClassifier(strategy = "stratified", random_state = args.seed)
         
     
+    # k nearest neighbours classifier
     elif args.knn is not None:
         print("    {0} nearest neighbor classifier".format(args.knn))
         standardizer = StandardScaler()
