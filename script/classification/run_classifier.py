@@ -10,10 +10,7 @@ Created on Wed Sep 29 14:23:48 2021
 
 import argparse, pickle
 from sklearn.dummy import DummyClassifier
-<<<<<<<<< Temporary merge branch 1:code/classification/run_classifier.py
 from sklearn.metrics import accuracy_score, cohen_kappa_score, precision_score, recall_score, f1_score
-=========
-from sklearn.metrics import accuracy_score, cohen_kappa_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier 
 from sklearn.pipeline import make_pipeline 
