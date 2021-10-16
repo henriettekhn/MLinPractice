@@ -11,7 +11,11 @@ Created on Tue Sep 28 15:55:44 2021
 
 import os, argparse, csv
 import pandas as pd
-from script.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL, COLUMN_HASHTAGS
+<<<<<<< HEAD:code/preprocessing/create_labels.py
+from code.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL, COLUMN_NRHASHTAGS
+=======
+from script.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL
+>>>>>>> origin/second:script/preprocessing/create_labels.py
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Creation of Labels")

@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-# ML in Practice
-Source code for the practical Seminar "Machine Learning in Practice", taught at OsnabrÃ¼ck University in the winter term 2021/2022.
-
+# Machine Learning in Practice
+Source code for the practical Seminar "Machine Learning in Practice", taught at Osnabrück University in the winter term 2021/2022 at the Insitute of Cognitive Science.
 
 As data source, we use the "Data Science Tweets 2010-2021" data set (version 3) by Ruchi Bhatia from [Kaggle](https://www.kaggle.com/ruchi798/data-science-tweets). The goal of our example project is to predict which tweets will go viral, i.e., receive many likes and retweets.
 
@@ -87,6 +85,7 @@ Here, `input.csv` is the respective training, validation, or test set file creat
 
 The features to be extracted can be configured with the following optional parameters:
 - `-c` or `--char_length`: Count the number of characters in the "tweet" column of the data frame. (see code/feature_extraction/character_length.py)
+- `-ec` or `--exclamation_count`: Count the number of exclamation marks used in the repective tweet. (see code/feature_extraction/exclamation_count.py)
 
 Moreover, the script support importing and exporting fitted feature extractors with the following optional arguments:
 - `-i` or `--import_file`: Load a configured and fitted feature extraction from the given pickle file. Ignore all parameters that configure the features to extract.
@@ -124,9 +123,11 @@ Here, `input.pickle` is a pickle file of the respective data subset, produced by
 By default, this data is used to train a classifier, which is specified by one of the following optional arguments:
 - `-m` or `--majority`: Majority vote classifier that always predicts the majority class.
 - `-f` or `--frequency`: Dummy classifier that makes predictions based on the label frequency in the training data.
+- `-at` or `--always_true`: Dummy classifier that always predicts True.
+- `-af` or `--always_false`: Dummy classifier that always predicts False.
 
 The classifier is then evaluated, using the evaluation metrics as specified through the following optional arguments:
-- `-a`or `--accuracy`: Classification accurracy (i.e., percentage of correctly classified examples).
+- `-a`or `-accuracy`: Classification accurracy (i.e., percentage of correctly classified examples).
 - `-k`or `--kappa`: Cohen's kappa (i.e., adjusting accuracy for probability of random agreement).
 - `-p`or `--precision`: Precision score (i.e., percentage of how many positively classified examples are correctly classified as positive).
 - `-r`or `--recall`: Recall score (i.e., percentage of the true positives caught by the classifier).
@@ -146,3 +147,10 @@ The script `application.py` provides a simple command line interface, where the 
 The script can be invoked as follows:
 ```python -m code.application.application path/to/preprocessing.pickle path/to/feature_extraction.pickle path/to/dimensionality_reduction.pickle path/to/classifier.pickle```
 The four pickle files correspond to the exported versions for the different pipeline steps as created by `run_preprocessing.py`, `extract_features.py`, `reduce_dimensionality.py`, and `run_classifier.py`, respectively, with the `-e` option.
+
+## Testing
+
+All python scripts and classes for testing can be found in `MLinPractice/test`. 
+There is one folder for testing feature extraction and one for preprocessing. 
+
+The script exclamation_test.py tests whether the counting of the number of exclamation marks is correctly done in the extraction of features. 
