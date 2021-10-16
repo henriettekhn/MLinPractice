@@ -11,13 +11,15 @@ Created on Tue Sep 28 16:43:18 2021
 import argparse, csv, pickle
 import pandas as pd
 from sklearn.pipeline import make_pipeline
-<<<<<<< HEAD:code/preprocessing/run_preprocessing.py
+<<<<<<<<< Temporary merge branch 1:script/preprocessing/run_preprocessing.py
+from script.preprocessing.punctuation_remover import PunctuationRemover
+=========
 from code.preprocessing.punctuation_remover import PunctuationRemover
 from code.preprocessing.tokenizer import Tokenizer
 from code.util import COLUMN_TWEET, SUFFIX_TOKENIZED
 =======
 from script.preprocessing.punctuation_remover import PunctuationRemover
->>>>>>> origin/second:script/preprocessing/run_preprocessing.py
+>>>>>>> second:script/preprocessing/run_preprocessing.py
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Various preprocessing steps")
