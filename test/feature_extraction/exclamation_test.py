@@ -7,7 +7,7 @@ Created on Sunday 10.10.2021 15:00
 
 import unittest
 import pandas as pd
-from code.feature_extraction.exclamation_count import ExclamationCount
+from script.feature_extraction.exclamation_count import ExclamationCount
 
 class ExclamationTest(unittest.TestCase):
     

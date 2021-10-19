@@ -8,7 +8,7 @@ Simple feature that counts the number of hashtags used in a tweet.
 @author: ml
 """
 import numpy as np
-from code.feature_extraction.feature_extractor import FeatureExtractor
+from script.feature_extraction.feature_extractor import FeatureExtractor
 
 # class for extracting the number of hashtags
 class NumberHashtags(FeatureExtractor):

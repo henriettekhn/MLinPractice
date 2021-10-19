@@ -9,7 +9,7 @@ Created on Sun Oct 10 14:17:41 2021
 """
 
 import numpy as np
-from code.feature_extraction.feature_extractor import FeatureExtractor
+from script.feature_extraction.feature_extractor import FeatureExtractor
 
 # class for extrcating feature if tweet contains photo/video
 class PhotoVideo(FeatureExtractor):

@@ -10,7 +10,7 @@ Created on Sun Oct 10 15:11:20 2021
 
 import unittest
 
-from code.feature_extraction.number_hashtags import NumberHashtags
+from script.feature_extraction.number_hashtags import NumberHashtags
 
 class HashtagFeatureTest(unittest.TestCase):
     
