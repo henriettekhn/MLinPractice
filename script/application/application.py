@@ -55,6 +55,7 @@ while True:
     prediction = pipeline.predict(df)
     confidence = pipeline.predict_proba(df)
     
+    # output to user
     print("Prediction: {0}, Confidence: {1}".format(prediction, confidence))
     print("")
     

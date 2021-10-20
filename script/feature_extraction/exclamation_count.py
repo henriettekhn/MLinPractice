@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Feature that counts the exclamation points in a tweet.
+
 Created on Sun Oct 10 13:55:28 2021
 
 @author: ml
@@ -18,7 +20,7 @@ class ExclamationCount(FeatureExtractor):
     
     # don't need to fit, so don't overwrite _set_variables()
     
-    # compute the numer of occuring exclamation marks based on the inputs
+    # compute the number of occuring exclamation marks based on the inputs
     def _get_values(self, inputs):
         
         result = np.array(inputs[0].count('!'))

@@ -67,16 +67,19 @@ else:   # manually set up a classifier
         classifier = DummyClassifier(strategy = "constant", constant = False)
         
     elif args.knn is not None:
+        # k nearest neighbors classifier
         print("    {0} nearest neighbor classifier".format(args.knn))
         standardizer = StandardScaler()
         knn_classifier = KNeighborsClassifier(args.knn)
         classifier = make_pipeline(standardizer, knn_classifier)
         
     elif args.svm:
+        # support vector machine classifier
         print ("    support vector machine classifer")
         standardizer = StandardScaler()
         classifier = make_pipeline(standardizer, SVC())
     
+    #fit data to classifier
     classifier.fit(data["features"], data["labels"].ravel())
 
 # now classify the given data
