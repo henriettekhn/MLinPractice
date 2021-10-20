@@ -6,7 +6,6 @@ Created on Sunday 10.10.2021 15:00
 """
 
 import unittest
-import pandas as pd
 from script.feature_extraction.exclamation_count import ExclamationCount
 
 class ExclamationTest(unittest.TestCase):
@@ -14,21 +13,16 @@ class ExclamationTest(unittest.TestCase):
     def setUp(self):
         self.INPUT_COLUMN = "input"
         self.exclamation_count = ExclamationCount(self.INPUT_COLUMN)
-        self.df = pd.DataFrame()
-        self.df[self.INPUT_COLUMN] = ['["This", "!", "is", "!", "a", "!", "test", "!", "tweet", "!"]']
     
     def test_input_columns(self):
         self.assertEqual(self.exclamation_count._input_columns, [self.INPUT_COLUMN])
     
     def test_exclamation_count_sentence(self): 
-        self.exclamation_count.fit(self.df)
         EXPECTED_COUNT = [5]
+        input_text = ['["This", "!", "is", "!", "a", "!", "test", "!", "tweet", "!"]']
         
-        ex_count = self.exclamation_count._get_values
-        
-        self.assertEqual(ex_count, EXPECTED_COUNT)
-        
-        # AssertionError: <method object at 0x7f2ca23e5388> != [5] 
+        self.assertEqual(self.exclamation_count._get_values(input_text), EXPECTED_COUNT)
+            
         
 if __name__ == '__main__':
     unittest.main()
