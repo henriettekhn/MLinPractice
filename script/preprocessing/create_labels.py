@@ -34,8 +34,19 @@ for file_path in file_paths:
 df = pd.concat(dfs)
 
 # compute new column "label" based on likes and retweets
-df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
+#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
 
+# weight retweets higher than likes
+#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + 2 * df[COLUMN_RETWEETS]) > args.threshold
+
+# weight likes higher than retweets
+#df[COLUMN_LABEL] = (2 * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
+
+# higher threshold
+df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 70
+
+# lower threshold
+#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 20
 
 # print statistics
 print("Number of tweets: {0}".format(len(df)))
