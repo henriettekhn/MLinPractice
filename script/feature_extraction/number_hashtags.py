@@ -21,4 +21,3 @@ class NumberHashtags(FeatureExtractor):
         result = result.reshape(-1, 1)
         return result
     
-    # find most popular hashtag??

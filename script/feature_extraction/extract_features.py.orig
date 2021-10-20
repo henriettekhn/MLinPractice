@@ -11,12 +11,15 @@ Created on Wed Sep 29 11:00:24 2021
 import argparse, csv, pickle
 import pandas as pd
 import numpy as np
-<<<<<<<<< Temporary merge branch 1:script/feature_extraction/extract_features.py
 from script.feature_extraction.character_length import CharacterLength
 from script.feature_extraction.feature_collector import FeatureCollector
 from script.feature_extraction.number_hashtags import NumberHashtags
+<<<<<<< HEAD
+from script.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS
+=======
 from script.feature_extraction.exclamation_count import ExclamationCount
 from script.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS, COLUMN_EXCLAMATIONS
+>>>>>>> e9d4a1e7b26277a53abcccd895adc2ae6b7c53e3
 
 
 # setting up CLI

@@ -9,7 +9,11 @@ Created on Sun Oct 10 15:11:20 2021
 """
 
 import unittest
+<<<<<<< HEAD
 import pandas as pd
+=======
+
+>>>>>>> e9d4a1e7b26277a53abcccd895adc2ae6b7c53e3
 from script.feature_extraction.number_hashtags import NumberHashtags
 
 class HashtagFeatureTest(unittest.TestCase):
