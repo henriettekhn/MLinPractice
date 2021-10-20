@@ -7,7 +7,7 @@ Created on Sun Oct 10 13:55:28 2021
 """
 
 import numpy as np
-from code.feature_extraction.feature_extractor import FeatureExtractor
+from script.feature_extraction.feature_extractor import FeatureExtractor
 
 # class for extracting number of exclamation marks in a tweet as a feature
 class ExclamationCount(FeatureExtractor):

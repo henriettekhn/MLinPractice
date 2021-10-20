@@ -11,21 +11,15 @@ Created on Wed Sep 29 11:00:24 2021
 import argparse, csv, pickle
 import pandas as pd
 import numpy as np
-<<<<<<< HEAD:code/feature_extraction/extract_features.py
-from code.feature_extraction.character_length import CharacterLength
-from code.feature_extraction.exclamation_count import ExclamationCount 
-feature_extraction.number_hashtags import NumberHashtags
-from code.feature_extraction.feature_collector import FeatureCollector
-from code.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS
-=======
 from script.feature_extraction.character_length import CharacterLength
 from script.feature_extraction.feature_collector import FeatureCollector
-from script.util import COLUMN_TWEET, COLUMN_LABEL
+from script.feature_extraction.number_hashtags import NumberHashtags
 <<<<<<< HEAD
->>>>>>> origin/second:script/feature_extraction/extract_features.py
+from script.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS
 =======
->>>>>>> second:script/feature_extraction/extract_features.py
->>>>>>> 37fd0d1a2fa57920fa383495f9aa946b3003b41f
+from script.feature_extraction.exclamation_count import ExclamationCount
+from script.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS, COLUMN_EXCLAMATIONS
+>>>>>>> e9d4a1e7b26277a53abcccd895adc2ae6b7c53e3
 
 
 # setting up CLI
@@ -35,8 +29,8 @@ parser.add_argument("output_file", help = "path to the output pickle file")
 parser.add_argument("-e", "--export_file", help = "create a pipeline and export to the given location", default = None)
 parser.add_argument("-i", "--import_file", help = "import an existing pipeline from the given location", default = None)
 parser.add_argument("-c", "--char_length", action = "store_true", help = "compute the number of characters in the tweet")
-parser.add_argument("-ec", "--exclamation_count", action = "store_true", help = "compute the number of ecxclamation marks in the tweet")
-parser.add_argument("-h", "--number_hashtags", action = "store_true", help = "compute the number of hushatgs in the tweet")
+parser.add_argument("-h", "--number_hashtags", action = "store_true", help = "compute the number of hashatgs in the tweet")
+parser.add_argument("--exclamation_count", action = "store_true", help = "compute the number of exclamation marks in the tweet")
 args = parser.parse_args()
 
 # load data
@@ -55,13 +49,13 @@ else:    # need to create FeatureCollector manually
         # character length of original tweet (without any changes)
         features.append(CharacterLength(COLUMN_TWEET))
         
-    elif args.exclamation_count:
-        # number of exclamation marks in the original tweet
-        features.append(ExclamationCount(COLUMN_TWEET))
-    
     elif args.number_hashtags:
         # number of hashtags in tweet
         features.append(NumberHashtags(COLUMN_HASHTAGS))
+        
+    elif args.exclamation_count:
+        # number of exclamation marks in tweet
+        features.append(ExclamationCount(COLUMN_EXCLAMATIONS))
 
     # create overall FeatureCollector
     feature_collector = FeatureCollector(features)
