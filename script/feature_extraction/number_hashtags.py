@@ -12,12 +12,14 @@ from script.feature_extraction.feature_extractor import FeatureExtractor
 
 # class for extracting the number of hashtags
 class NumberHashtags(FeatureExtractor):
+    
     def __init__(self, input_column):
         super().__init__([input_column], "{0}_nrHashtags".format(input_column))
         
     # count hashtags  
     def _get_number(self, inputs):
-        result = np.arrray(inputs[0].len())
+        
+        result = np.array(len(inputs[0]))
         result = result.reshape(-1, 1)
         return result
     
