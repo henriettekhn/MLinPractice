@@ -15,7 +15,7 @@ from script.feature_extraction.character_length import CharacterLength
 from script.feature_extraction.feature_collector import FeatureCollector
 from script.feature_extraction.number_hashtags import NumberHashtags
 from script.feature_extraction.exclamation_count import ExclamationCount
-from script.util import COLUMN_TWEET, COLUMN_LABEL, COLUMN_HASHTAGS, COLUMN_EXCLAMATIONS
+from script.util import COLUMN_TWEET, COLUMN_LABEL
 
 
 # setting up CLI
@@ -45,13 +45,14 @@ else:    # need to create FeatureCollector manually
         # character length of original tweet (without any changes)
         features.append(CharacterLength(COLUMN_TWEET))
         
-    if args.number_hashtags:
-        # number of hashtags in tweet
-        features.append(NumberHashtags(COLUMN_HASHTAGS))
-        
     if args.exclamation_count:
         # number of exclamation marks in tweet
         features.append(ExclamationCount(COLUMN_TWEET))
+        
+    if args.number_hashtags:
+        # number of hashtags in tweet
+        features.append(NumberHashtags(COLUMN_TWEET))
+        
 
     # create overall FeatureCollector
     feature_collector = FeatureCollector(features)

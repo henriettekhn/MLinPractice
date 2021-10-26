@@ -17,9 +17,9 @@ class NumberHashtags(FeatureExtractor):
         super().__init__([input_column], "{0}_nrHashtags".format(input_column))
         
     # count hashtags  
-    def _get_number(self, inputs):
+    def _get_values(self, inputs):
         
-        result = np.array(len(inputs[0]))
+        result = np.array(inputs[0].str.count('#'))
         result = result.reshape(-1, 1)
         return result
     
