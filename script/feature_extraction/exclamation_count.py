@@ -23,6 +23,6 @@ class ExclamationCount(FeatureExtractor):
     # compute the number of occuring exclamation marks based on the inputs
     def _get_values(self, inputs):
         
-        result = np.array(inputs[0].count('!'))
+        result = np.array(inputs[0].str.count('!'))
         result = result.reshape(-1,1)
         return result
