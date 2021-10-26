@@ -5,7 +5,7 @@ Feature that counts the exclamation points in a tweet.
 
 Created on Sun Oct 10 13:55:28 2021
 
-@author: ml
+@author: hkohnen, huhlenbrock
 """
 
 import numpy as np
