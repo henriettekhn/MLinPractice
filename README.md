@@ -153,4 +153,4 @@ The four pickle files correspond to the exported versions for the different pipe
 All python scripts and classes for testing can be found in `MLinPractice/test`. 
 There is one folder for testing feature extraction and one for preprocessing. 
 
-The script exclamation_test.py tests whether the counting of the number of exclamation marks is correctly done in the extraction of features. 
+The script `exclamation_test.py` tests whether the counting of the number of exclamation marks is correctly done in the extraction of features. 

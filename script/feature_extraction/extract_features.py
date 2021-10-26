@@ -25,7 +25,7 @@ parser.add_argument("output_file", help = "path to the output pickle file")
 parser.add_argument("-e", "--export_file", help = "create a pipeline and export to the given location", default = None)
 parser.add_argument("-i", "--import_file", help = "import an existing pipeline from the given location", default = None)
 parser.add_argument("-c", "--char_length", action = "store_true", help = "compute the number of characters in the tweet")
-parser.add_argument("-h", "--number_hashtags", action = "store_true", help = "compute the number of hashatgs in the tweet")
+parser.add_argument("--number_hashtags", action = "store_true", help = "compute the number of hashatgs in the tweet")
 parser.add_argument("--exclamation_count", action = "store_true", help = "compute the number of exclamation marks in the tweet")
 args = parser.parse_args()
 
@@ -45,13 +45,13 @@ else:    # need to create FeatureCollector manually
         # character length of original tweet (without any changes)
         features.append(CharacterLength(COLUMN_TWEET))
         
-    elif args.number_hashtags:
+    if args.number_hashtags:
         # number of hashtags in tweet
         features.append(NumberHashtags(COLUMN_HASHTAGS))
         
-    elif args.exclamation_count:
+    if args.exclamation_count:
         # number of exclamation marks in tweet
-        features.append(ExclamationCount(COLUMN_EXCLAMATIONS))
+        features.append(ExclamationCount(COLUMN_TWEET))
 
     # create overall FeatureCollector
     feature_collector = FeatureCollector(features)
