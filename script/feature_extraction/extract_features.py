@@ -44,14 +44,7 @@ else:    # need to create FeatureCollector manually
     if args.char_length:
         # character length of original tweet (without any changes)
         features.append(CharacterLength(COLUMN_TWEET))
-        
-<<<<<<< HEAD
-    if args.number_hashtags:
-        # number of hashtags in tweet
-        features.append(NumberHashtags(COLUMN_TWEET))
-        
-=======
->>>>>>> 4cbc7c1c9fda8a1f463f2c9ef635aec4b9012944
+
     if args.exclamation_count:
         # number of exclamation marks in tweet
         features.append(ExclamationCount(COLUMN_TWEET))
