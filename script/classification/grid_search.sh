@@ -21,18 +21,17 @@ else
     exit 1
 fi
 
-# do the grid search for hyperparameters of KNeighbors classifier
+'''# do the grid search for hyperparameters of KNeighbors classifier
 for k in $values_of_k
 do
     echo $k
     $cmd 'data/classification/clf_'"$k"'.pickle' --knn $k -s 42 --accuracy --kappa
-done
+done'''
 
-'''
+
 # do grid search for hyperparameters of RandomForest classifier
 for t in $number_of_trees
 do
     echo $t
-    $cmd 'data/classificatino/rf_clf_'"$t"'.pickle' --rf $t -s 42 --accuracy --kappa
+    $cmd 'data/classification/rf_clf_'"$t"'.pickle' --rf $t -s 42 --accuracy --kappa
 done 
-'''
