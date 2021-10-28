@@ -15,6 +15,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier 
 from sklearn.pipeline import make_pipeline 
 from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Classifier")
@@ -28,6 +29,7 @@ parser.add_argument("-at", "--always_true", action = "store_true", help = "alway
 parser.add_argument("-af", "--always_false", action = "store_true", help = "always false classifier")
 parser.add_argument("--knn", type = int, help = "k nearest neighbor classifer with the specified value of k", default = None)
 parser.add_argument("--svm", help = "classifier using a support vector machine")
+parser.add_argument("--rf", help = "classifier using random forest", default = None)
 parser.add_argument("-a", "--accuracy", action = "store_true", help = "evaluate using accuracy")
 parser.add_argument("-k", "--kappa", action = "store_true", help = "evaluate using Cohen's kappa")
 parser.add_argument("-p", "--precision", action = "store_true", help = "evaluate using precision")
@@ -78,6 +80,14 @@ else:   # manually set up a classifier
         print ("    support vector machine classifer")
         standardizer = StandardScaler()
         classifier = make_pipeline(standardizer, SVC())
+        
+    if args.rf:
+        # random forest classifier
+        print("    random forest classifier")
+        standardizer = StandardScaler()
+        rf_classifier = RandomForestClassifier()
+        classifier = make_pipeline(standardizer, rf_classifier)
+        
     
     #fit data to classifier
     classifier.fit(data["features"], data["labels"].ravel())
