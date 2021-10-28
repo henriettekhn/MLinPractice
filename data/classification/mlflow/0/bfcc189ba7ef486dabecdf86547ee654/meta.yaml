@@ -1,0 +1,15 @@
+artifact_uri: data/classification/mlflow/0/bfcc189ba7ef486dabecdf86547ee654/artifacts
+end_time: 1635440374746
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: bfcc189ba7ef486dabecdf86547ee654
+run_uuid: bfcc189ba7ef486dabecdf86547ee654
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1635440348339
+status: 3
+tags: []
+user_id: ml
