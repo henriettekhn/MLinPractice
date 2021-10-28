@@ -86,6 +86,7 @@ Here, `input.csv` is the respective training, validation, or test set file creat
 The features to be extracted can be configured with the following optional parameters:
 - `-c` or `--char_length`: Count the number of characters in the "tweet" column of the data frame. (see script/feature_extraction/character_length.py)
 - `--exclamation_count`: Count the number of exclamation marks used in the repective tweet. (see script/feature_extraction/exclamation_count.py)
+- `--number_hashtags`: Count the number of hashtags in the "tweet" column. (see script/feature_extraction/number_hashtags.py)
 
 Moreover, the script support importing and exporting fitted feature extractors with the following optional arguments:
 - `-i` or `--import_file`: Load a configured and fitted feature extraction from the given pickle file. Ignore all parameters that configure the features to extract.
@@ -125,12 +126,16 @@ By default, this data is used to train a classifier, which is specified by one o
 - `-f` or `--frequency`: Dummy classifier that makes predictions based on the label frequency in the training data.
 - `-at` or `--always_true`: Dummy classifier that always predicts True.
 - `-af` or `--always_false`: Dummy classifier that always predicts False.
+- `--knn`: K nearest neighbors classifier that makes a predicition by using the k nearest neighbors of a datapoint.
+- `--rf`: Random Forest Classifier that makes a prediction based on a forest of decision trees.
+
 
 The classifier is then evaluated, using the evaluation metrics as specified through the following optional arguments:
 - `-a`or `-accuracy`: Classification accurracy (i.e., percentage of correctly classified examples).
 - `-k`or `--kappa`: Cohen's kappa (i.e., adjusting accuracy for probability of random agreement).
 - `-p`or `--precision`: Precision score (i.e., percentage of how many positively classified examples are correctly classified as positive).
 - `-r`or `--recall`: Recall score (i.e., percentage of the true positives caught by the classifier).
+- `-f1` or `--f1_score`: f1-score (i.e. harmonic mean of precision and recall)
 
 Moreover, the script support importing and exporting trained classifiers with the following optional arguments:
 - `-i` or `--import_file`: Load a trained classifier from the given pickle file. Ignore all parameters that configure the classifier to use and don't retrain the classifier.
