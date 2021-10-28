@@ -109,7 +109,7 @@ Moreover, the script support importing and exporting fitted dimensionality reduc
 - `-i` or `--import_file`: Load a configured and fitted dimensionality reduction technique from the given pickle file. Ignore all parameters that configure the dimensionality reduction technique.
 - `-e` or `--export_file`: Export the configured and fitted dimensionality reduction technique into the given pickle file.
 
-Finally, if the flag `--verbose` is set, the script outputs some additional information about the dimensionality reduction process.
+Finally, if the flag ``--verbose` is set, the script outputs some additional information about the dimensionality reduction process.
 
 ## Classification
 
@@ -127,6 +127,7 @@ By default, this data is used to train a classifier, which is specified by one o
 - `-at` or `--always_true`: Dummy classifier that always predicts True.
 - `-af` or `--always_false`: Dummy classifier that always predicts False.
 - `--knn`: K nearest neighbors classifier that makes a predicition by using the k nearest neighbors of a datapoint.
+- `--svm`: Support Vector Machine classifier that makes a prediction with the help of a largest-margin hyperplane. 
 - `--rf`: Random Forest Classifier that makes a prediction based on a forest of decision trees.
 
 
