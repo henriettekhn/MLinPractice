@@ -72,17 +72,21 @@ else:   # manually set up a classifier
         params = {"classifier": "frequency"}
         classifier = DummyClassifier(strategy = "stratified", random_state = args.seed)
         
-    if args.always_true:
+    elif args.always_true:
         # always true classifier
         print("    always true classifier")
+        log_param("classifier", "always true")
+        params = {"classifier": "always ture"}
         classifier = DummyClassifier(strategy = "constant", constant = True)
         
-    if args.always_false:
+    elif args.always_false:
         # always false classifier
         print("    always false classifier")
+        log_param("classifier", "always false")
+        params = {"classifier": "always false"}
         classifier = DummyClassifier(strategy = "constant", constant = False)
         
-    if args.knn is not None:
+    elif args.knn is not None:
         # k nearest neighbors classifier
         print("    {0} nearest neighbor classifier".format(args.knn))
         log_param("classifier", "knn")
@@ -92,16 +96,20 @@ else:   # manually set up a classifier
         knn_classifier = KNeighborsClassifier(args.knn, n_jobs = -1)
         classifier = make_pipeline(standardizer, knn_classifier)
         
-    if args.svm:
+    elif args.svm:
         # support vector machine classifier
         print ("    support vector machine classifier")
+        log_param("classifier", "svm")
+        params = {"classifier": "svm"}        
         standardizer = StandardScaler()
         svm_classifier = LinearSVC(dual=False)
         classifier = make_pipeline(standardizer, svm_classifier)
         
-    if args.rf:
+    elif args.rf:
         # random forest classifier
         print("    random forest classifier")
+        log_param("classifier", "random forest")
+        params = {"classifier": "random forest"}
         standardizer = StandardScaler()
         rf_classifier = RandomForestClassifier()
         classifier = make_pipeline(standardizer, rf_classifier)
