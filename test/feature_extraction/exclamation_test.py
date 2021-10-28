@@ -19,7 +19,7 @@ class ExclamationTest(unittest.TestCase):
     
     def test_exclamation_count_sentence(self): 
         EXPECTED_COUNT = [5]
-        input_text = ['["This", "!", "is", "!", "a", "!", "test", "!", "tweet", "!"]']
+        input_text = 'This is a test tweet!!!!!'
         
         self.assertEqual(self.exclamation_count._get_values(input_text), EXPECTED_COUNT)
             
