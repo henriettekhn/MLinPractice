@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score, cohen_kappa_score, precision_score, 
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier 
 from sklearn.pipeline import make_pipeline 
-from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.ensemble import RandomForestClassifier
 
 # setting up CLI
@@ -28,7 +28,7 @@ parser.add_argument("-f", "--frequency", action = "store_true", help = "label fr
 parser.add_argument("-at", "--always_true", action = "store_true", help = "always true classifier")
 parser.add_argument("-af", "--always_false", action = "store_true", help = "always false classifier")
 parser.add_argument("--knn", type = int, help = "k nearest neighbor classifer with the specified value of k", default = None)
-parser.add_argument("--svm", help = "classifier using a support vector machine")
+parser.add_argument("--svm", help = "classifier using a support vector machine", default = None)
 parser.add_argument("--rf", help = "classifier using random forest", default = None)
 parser.add_argument("-a", "--accuracy", action = "store_true", help = "evaluate using accuracy")
 parser.add_argument("-k", "--kappa", action = "store_true", help = "evaluate using Cohen's kappa")
@@ -53,33 +53,34 @@ else:   # manually set up a classifier
         print("    majority vote classifier")
         classifier = DummyClassifier(strategy = "most_frequent", random_state = args.seed)
         
-    elif args.frequency:
+    if args.frequency:
         # label frequency classifier
         print("    label frequency classifier")
         classifier = DummyClassifier(strategy = "stratified", random_state = args.seed)
         
-    elif args.always_true:
+    if args.always_true:
         # always true classifier
         print("    always true classifier")
         classifier = DummyClassifier(strategy = "constant", constant = True)
         
-    elif args.always_false:
+    if args.always_false:
         # always false classifier
         print("    always false classifier")
         classifier = DummyClassifier(strategy = "constant", constant = False)
         
-    elif args.knn is not None:
+    if args.knn is not None:
         # k nearest neighbors classifier
         print("    {0} nearest neighbor classifier".format(args.knn))
         standardizer = StandardScaler()
         knn_classifier = KNeighborsClassifier(args.knn)
         classifier = make_pipeline(standardizer, knn_classifier)
         
-    elif args.svm:
+    if args.svm:
         # support vector machine classifier
-        print ("    support vector machine classifer")
+        print ("    support vector machine classifier")
         standardizer = StandardScaler()
-        classifier = make_pipeline(standardizer, SVC())
+        svm_classifier = LinearSVC(dual=False)
+        classifier = make_pipeline(standardizer, svm_classifier)
         
     if args.rf:
         # random forest classifier
