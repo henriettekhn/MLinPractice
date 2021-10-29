@@ -11,7 +11,7 @@ Created on Tue Sep 28 15:55:44 2021
 
 import os, argparse, csv
 import pandas as pd
-from script.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL   #, COLUMN_NRHASHTAGS
+from script.util import COLUMN_LIKES, COLUMN_RETWEETS, COLUMN_LABEL
 
 # setting up CLI
 parser = argparse.ArgumentParser(description = "Creation of Labels")
@@ -40,13 +40,13 @@ df = pd.concat(dfs)
 #df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + 2 * df[COLUMN_RETWEETS]) > args.threshold
 
 # weight likes higher than retweets
-#df[COLUMN_LABEL] = (2 * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
+df[COLUMN_LABEL] = (2 * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
 
 # higher threshold
 #df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 70
 
 # lower threshold
-df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 30
+#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 30
 
 # print statistics
 print("Number of tweets: {0}".format(len(df)))
