@@ -5,7 +5,7 @@ Runs the specified collection of feature extractors.
 
 Created on Wed Sep 29 11:00:24 2021
 
-@author: lbechberger
+@author: lbechberger, hkohnen, huhlenbrock
 """
 
 import argparse, csv, pickle

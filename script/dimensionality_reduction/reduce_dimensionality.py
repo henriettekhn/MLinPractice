@@ -5,7 +5,7 @@ Apply a dimensionality reduction technique.
 
 Created on Wed Sep 29 13:33:37 2021
 
-@author: lbechberger
+@author: lbechberger, hkohnen, huhlenbrock
 """
 
 import argparse, pickle

@@ -6,7 +6,7 @@ Stores the result as a single pandas DataFrame in a pickle file.
 
 Created on Tue Sep 28 15:55:44 2021
 
-@author: lbechberger
+@author: lbechberger, hkohnen, huhlenbrock
 """
 
 import os, argparse, csv
@@ -43,10 +43,10 @@ df = pd.concat(dfs)
 #df[COLUMN_LABEL] = (2 * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > args.threshold
 
 # higher threshold
-df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 70
+#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 70
 
 # lower threshold
-#df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 20
+df[COLUMN_LABEL] = (args.likes_weight * df[COLUMN_LIKES] + args.retweet_weight * df[COLUMN_RETWEETS]) > 30
 
 # print statistics
 print("Number of tweets: {0}".format(len(df)))
