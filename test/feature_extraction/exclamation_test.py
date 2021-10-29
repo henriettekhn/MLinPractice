@@ -28,6 +28,12 @@ if __name__ == '__main__':
     unittest.main()
         
 
+"""
+REMARK: This test fails because of the .str in exclamation_count.py. We could not 
+make this test succeed, since we were not able to figure out the correct format 
+of the input text. Becasuse our application is working nevertheless, we decided
+to not spend any more time trying to fix it.
+"""
     
         
 
