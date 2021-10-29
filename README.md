@@ -160,3 +160,7 @@ The four pickle files correspond to the exported versions for the different pipe
 All python scripts and classes for testing can be found in the folder `test`. 
 There is one folder for testing feature extraction containing the scripts `exclamation_test.py`, `hashtag_test.py` and `bigrams_test.py`.
 The second folder is for testing preprocessing and contains the scipt `tokenizer_test.py`. 
+
+## Grid search
+
+The shell script `grid_search.sh` in `script/classification` runs a grid search on hyperparameters for the KNeighbors, RandomForest and SupportVectorMachine classifier.
