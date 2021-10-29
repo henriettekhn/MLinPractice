@@ -1,5 +1,6 @@
 # Documentation
 
+## Introduction
 This is a program that predicts if a tweet will go viral or not. For this, the
 user needs to enter a tweet and will then receive the prediction and how 
 certain this prediction is. 
@@ -70,11 +71,19 @@ hoping to be able to receive a positive classification during application.
 
 ### Results
 
-Maybe show a short example what your preprocessing does.
+Using the original definition of viral, so likes + retweets >= 50 and weights = 1,
+we get a distribution of about 0.91 (False) and 0.09 (True).
+Lowering the threshold to 30 leads to more positive results, so we get a distribution
+of about 0.84 (False) and 0.16 (True).
+Incresing the threshold value to 100 leads to more negative results, so we get 
+a distribution of about 0.94 (False) and 0.06 (True).
+We also tried out changing the weights of the number of retweets or likes, 
+but leaving the threshold at 50.
+When incresing the weight of retweets to 2, the label distribution was about 0.86 
+(False) and 0.14 (True).
+Lastly, we increased the weight of the likes to 2 and the weight of retweets was
+left at 1, this led to a distribution of 0.85 (False) and 0.15 (True).
 
-### Interpretation
-
-Probably, no real interpretation possible, so feel free to leave this section out.
 
 ## Feature Extraction
 
@@ -100,7 +109,7 @@ influence the popularity of the tweet.
 ### Design Decisions
 
 We decided not to reduce our dimensionality, but in order to still get some
-information about the usefulness of the features we decided to use SelectKBest
+information about the usefulness of the features, we decided to use SelectKBest
 with Mutual Information and k = all (= 3). As we only had three features in total,
 we did not want to reduce them further because that would have led to even 
 less information for classification. 
@@ -122,7 +131,7 @@ which is also reflected in our classification-evaluation results.
 ### Design Decisions
 
 As more elaborated classifiers, we have chosen the k nearest neighbors, random 
-forest and support vector machine classifier.
+forest and support vector machine classifier (see `script/classification/run_classifiers.py`).
 We performed hyperparameter optimization using grid search in order to find 
 the best parameter configuration for the best suited classifier. 
 For the k nearest neighbors classifier, we tried out different values for k in 
